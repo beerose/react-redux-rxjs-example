@@ -2,6 +2,7 @@
 import { Form, Input, Button } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { jsx } from "@emotion/core";
+import { Todo } from "../types";
 
 const formItemLayout = {
   labelCol: {
@@ -21,11 +22,14 @@ const formItemLayoutWithOutLabel = {
 };
 
 type DynamicFieldSetProps = {
-  onSubmit: () => void;
+  onSubmit: (todos: Todo[]) => void;
 };
-export const DynamicFieldSet: React.FC<DynamicFieldSetProps> = ({}) => {
+export const DynamicFieldSet: React.FC<DynamicFieldSetProps> = ({
+  onSubmit
+}) => {
   const onFinish = values => {
-    console.log("Received values of form:", values);
+    console.log({ values });
+    onSubmit(values);
   };
 
   return (
