@@ -14,9 +14,9 @@ export type TodosState = Readonly<{
 }>;
 const initialState: TodosState = {
   todos: [
-    { name: "clean houre", status: "done" },
+    { name: "clean house", status: "done" },
     {
-      name: "akjsdhas",
+      name: "be nice",
       status: "todo"
     }
   ],

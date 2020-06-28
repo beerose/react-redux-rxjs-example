@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { Checkbox } from "antd";
-import { Todo } from "./types";
+import { Todo } from "../types";
 
 type TodoItemProps = {
   todo: Todo;
@@ -13,7 +13,7 @@ export const TodoItem = ({ todo, onChange }: TodoItemProps) => {
     <div
       css={{
         opacity: disabled ? 0.5 : 1,
-        cursor: disabled ? "none" : "pointer",
+        cursor: disabled ? "inherit" : "pointer",
         paddingBottom: 8
       }}
     >
@@ -23,7 +23,7 @@ export const TodoItem = ({ todo, onChange }: TodoItemProps) => {
           checked={disabled || undefined}
           onChange={() => onChange(todo)}
         />
-        <span css={{ marginLeft: 5 }}>
+        <span css={{ marginLeft: 5, cursor: disabled ? "inherit" : "pointer" }}>
           {disabled ? <s>{todo.name}</s> : todo.name}
         </span>
       </label>

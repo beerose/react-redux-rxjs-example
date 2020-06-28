@@ -5,10 +5,12 @@ import * as actions from "./actions";
 import { isOfType } from "typesafe-actions";
 import { of } from "rxjs";
 
-export const completeTodoEpic: Epic<TodoAction, TodoAction, TodosState, {}> = (
-  action$,
-  state$
-) =>
+export const completeTodoEpic: Epic<
+  TodoAction,
+  TodoAction,
+  TodosState,
+  {}
+> = action$ =>
   action$.pipe(
     filter(isOfType("TODO_COMPLETE_REQ")),
     map(action => actions.completeTodoSuccess(action.payload))

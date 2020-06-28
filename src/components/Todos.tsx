@@ -32,6 +32,7 @@ export const DynamicFieldSet: React.FC<DynamicFieldSetProps> = ({
   const [form] = Form.useForm();
 
   const onFinish = (values: { names: string[] }) => {
+    if (!values || !values.names || !values.names.length) return;
     onSubmit(values);
     form.resetFields();
   };
