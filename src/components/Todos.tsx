@@ -3,6 +3,8 @@ import { Form, Input, Button } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { jsx } from "@emotion/core";
 import { Todo } from "../types";
+import { Store } from "antd/lib/form/interface";
+import { useRef } from "react";
 
 const formItemLayout = {
   labelCol: {
@@ -22,21 +24,24 @@ const formItemLayoutWithOutLabel = {
 };
 
 type DynamicFieldSetProps = {
-  onSubmit: (todos: Todo[]) => void;
+  onSubmit: (value: { names: string[] }) => void;
 };
 export const DynamicFieldSet: React.FC<DynamicFieldSetProps> = ({
   onSubmit
 }) => {
-  const onFinish = values => {
-    console.log({ values });
+  const [form] = Form.useForm();
+
+  const onFinish = (values: { names: string[] }) => {
     onSubmit(values);
+    form.resetFields();
   };
 
   return (
     <Form
+      form={form}
       name="dynamic_form_item"
       {...formItemLayoutWithOutLabel}
-      onFinish={onFinish}
+      onFinish={onFinish as (v: Store) => void}
       css={{
         "*": {
           marginLeft: 0

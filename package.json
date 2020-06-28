@@ -23,8 +23,8 @@
     "react-scripts": "3.3.0",
     "redux": "4.0.5",
     "redux-devtools-extension": "2.13.8",
+    "redux-observable": "1.2.0",
     "rxjs": "6.5.5",
-    "rxjs-observable": "0.0.7",
     "typesafe-actions": "5.1.0"
   },
   "devDependencies": {

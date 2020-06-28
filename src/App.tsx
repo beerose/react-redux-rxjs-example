@@ -41,8 +41,8 @@ const App = (props: AppProps) => {
     onComplete(todo);
   };
 
-  const handleSubmit = (todos: Todo[]) => {
-    onAddNewTodos(todos);
+  const handleSubmit = ({ names }: { names: string[] }) => {
+    onAddNewTodos(names.map(name => ({ name, status: "todo" })));
   };
 
   return (
@@ -57,8 +57,17 @@ const App = (props: AppProps) => {
         height: "100%"
       }}
     >
-      <Card bordered={false} css={{ width: 500 }}>
+      <Card bordered={false} css={{ width: 400 }}>
         <h3>To do</h3>
+        {error && (
+          <p
+            css={{
+              color: "red"
+            }}
+          >
+            {error}
+          </p>
+        )}
         <Divider />
         {todos.map(todo => (
           <TodoItem key={todo.name} todo={todo} onChange={handleComplete} />
